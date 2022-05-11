@@ -2,9 +2,9 @@
  * @Author: xpy
  * @Description: 路由配置
  * @Date: 2022-04-27 11:27:15
- * @LastEditTime: 2022-05-11 15:29:30
+ * @LastEditTime: 2022-05-11 15:49:51
  */
-import { HashRouter, Routes, Route, } from "react-router-dom";
+import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import routerList from './router-list'; // 获取路由列表
 import Hello from '../pages/Hello'; // 定义欢迎页面
 import Layout from '../Layout'; // 定义页面排版布局
@@ -24,7 +24,7 @@ const Router = () =>{
             </Route>
   })
   
-  return (<HashRouter>
+  return (<BrowserRouter>
     <Routes>
       {/* 通过类似递归的方式 最终要得到以下格式的路由信息 */}
       {/* 渲染子路由 demo 演示：https://reactrouter.com/ */}
@@ -45,7 +45,7 @@ const Router = () =>{
       {/* https://reactrouter.com/docs/en/v6/getting-started/overview */}
       <Route path="*" element={<NotFound />} />
     </Routes>
-  </HashRouter>)
+  </BrowserRouter>)
 }
 
 export default Router;
