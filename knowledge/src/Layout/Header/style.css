@@ -1,0 +1,12 @@
+.header-list{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100%;
+  padding: 0 10px;
+}
+
+.header-list > .ant-btn {
+  margin-right: 10px;
+  margin-bottom: 5px;
+}

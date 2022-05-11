@@ -1,0 +1,140 @@
+:root {
+  --mapbg: rgba(199, 199, 199, 0.8);
+}
+
+.map_wrapper{
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* 绝对定位
+  顶层包裹组件
+  map_wrapper relative
+
+  地图组件 层级1
+  wrapper z-index: 1;
+
+  顶部遮罩层 文字展示 层级2
+  banner_text z-index: 2;
+
+  防疫政策图片 层级3
+  banner_image z-index: 3;
+*/
+.wrapper{
+  box-shadow: 2px 2px 9px #a8a8a8;
+  border: 1px solid #e5e5e5;
+  border-radius: 15px;
+  height: 100%;
+  min-height: 500px;
+  z-index: 1;
+}
+
+.banner_text{
+  width: 100%;
+  position: absolute;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  top: 0;
+  min-height: 64px;
+  left: 5;
+  z-index: 2;
+  background: var(--mapbg);
+  padding: 10px 15px;
+  transition: all 1.5s;
+}
+.banner_text > div:nth-child(1){
+  flex-grow: 1;
+}
+
+.banner_word1 {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+}
+.banner_word1 > span ::before{
+  content: '';
+  display: inline-block;
+  border-radius: 5px;
+  width: 10px;
+  height: 10px;
+  background: #f76342;
+  margin-right: 5px;
+}
+.banner_word1 > span:nth-child(2) ::before{
+  background: #d27f27;
+}
+.banner_word1 > span:nth-child(3) ::before{
+  background: #81d722;
+}
+/* 滚动提示 风险点数量文字 */
+.banner_word2 {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 15px;
+}
+.banner_word2 > span{
+  font-weight: bolder;
+}
+.banner_word2 > span:nth-child(1){
+  color: #f76342;
+}
+.banner_word2 > span:nth-child(2){
+  color: #d27f27;
+}
+.banner_word2 > span:nth-child(3){
+  color: #609229;
+}
+.banner_areabtn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 82px;
+}
+
+/* 文字滚动 */
+.banner_textscroll{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  z-index: 2;
+  background: var(--mapbg);
+  padding: 10px;
+  transition: all 1.5s;
+}
+
+@keyframes scrolltext{
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.banner_textscroll > div{
+  white-space: nowrap;
+  width: 550px;
+  animation: 10s scrolltext linear infinite;
+}
+
+/* 防疫政策图片 */
+.banner_image{
+  position: absolute;
+  top: 30%;
+  right: 10px;
+  z-index: 3;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  box-shadow: 4px 4px 10px rgb(113, 113, 113);
+  cursor: pointer;
+  transition: all 1.5s;
+}
