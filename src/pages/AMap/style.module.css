@@ -7,6 +7,9 @@
   height: 100%;
   overflow: hidden;
 }
+.map_wrapper .amap-overlay-text-container{
+  border: 1px solid red;
+}
 
 /* 绝对定位
   顶层包裹组件

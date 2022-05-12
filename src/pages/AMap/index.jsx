@@ -31,11 +31,15 @@ class AMappage extends PureComponent {
     }).then((AMap)=>{
         const _map = new AMap.Map("container",{ //设置地图容器id
           viewMode:"3D",         //是否为3D地图模式
-          zoom: 13,                //初始化地图级别
+          zoom: 8,                //初始化地图级别
           center:[120.232283,30.24726], //初始化地图中心点位置  默认杭州
         });
         // 这里先保存map实例，然后再请求数据，
         // 防止map的异步加载，导致数据无法渲染问题
+
+// .amap-overlay-text-container {
+//   background: red;
+// }
         this.setState({ mapdom:_map },this.start)
     }).catch(() =>  message.warning('地图加载失败，请重试！'))
   }
@@ -49,18 +53,27 @@ class AMappage extends PureComponent {
         const redArr = [];
         const yellowArr = [];
         const greenArr = [];
+        const ImportantTexts = []; // 收集重点区域数组
         // res.data 数据格式
         res.data.forEach(item=>{
-          const { mapArea, type = 1, } = item;
+          const { mapArea, type = 1, mapMarker } = item;
           if(type == 1) mapArea.path && redArr.push(mapArea.path)
           else if(type == 2) mapArea.path && yellowArr.push(mapArea.path)
           else mapArea.path && greenArr.push(mapArea.path)
+
+          // 添加重点区域文字标记
+          if(mapMarker.text) {
+            if(mapMarker.position) ImportantTexts.push(mapMarker)
+            else ImportantTexts.push({ ...mapMarker, position:mapArea?.path[0]  })
+          }
         })
         this.setState({ greenArr, yellowArr, redArr })
         // 渲染顺序 绿色 橙色 红色 不可以乱，红色需要最后覆盖
         this.setPolygon({ data:greenArr, color:'#81d722' })  // 绿色 
         this.setPolygon({ data:yellowArr, color:'#d88c3b' }) // 橙色
         this.setPolygon({ data:redArr, color:'#ff2e00' }) // 红色
+        // 设置重点区域文字
+        this.setTexts(ImportantTexts)
       } else message.warning(res.msg)
     })
     // 1.2 获取更新时间和防控地址
@@ -104,6 +117,28 @@ class AMappage extends PureComponent {
       });
   
       mapdom.add(polygon);
+    })
+  }
+  // 2.1 设置重点区域文字
+  // 案例 https://lbs.amap.com/demo/javascript-api/example/marker/labelsmarker
+  // 数据源 https://a.amap.com/jsapi_demos/static/demo-center/data/food_1.4.15.js
+  setTexts = (list) =>{
+    const { mapdom } = this.state;
+    list.forEach(({ position, text }) =>{
+      const t = new AMap.LabelMarker({ 
+        position:[position.lng, position.lat], 
+        text: {
+          content: text,
+          style: {
+            fontSize: 10,
+            fontWeight: 'normal',
+            fillColor: '#ff2e00',
+            strokeWidth: 1,
+          }
+        },
+        zooms: [9, 20],
+      });
+      mapdom.add(t);
     })
   }
 
