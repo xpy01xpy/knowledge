@@ -236,7 +236,11 @@ class AMappage extends PureComponent {
         className={style.banner_image} src={CovidPrompt.icon} alt=''
       />
       {/* map-content */}
-      <div id="container" className={style.wrapper}> 地图加载中 loading... </div>
+      <div id="container" className={style.wrapper}>
+        <div className={`animate__animated animate__flash ${style.whitecontent}`}>
+          <div className={style.whitetext}>地图加载中...</div>
+        </div>
+      </div>
     </div>)
   }
 }
