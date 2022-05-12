@@ -22,3 +22,6 @@
 
 ## 4 高德地图 AMap https://console.amap.com/dev/key/app
 <!-- 在react中使用高德地图 https://lbs.amap.com/api/jsapi-v2/guide/webcli/map-react1 -->
+
+
+# 5 页面小元素动效 animate.css https://animate.style/

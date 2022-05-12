@@ -2,13 +2,17 @@
  * @Author: xpy
  * @Description: 入口文件
  * @Date: 2022-04-26 22:58:01
- * @LastEditTime: 2022-05-05 17:37:10
+ * @LastEditTime: 2022-05-12 10:36:59
  */
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Router from './Router'; // 定义路由
-import './global.css'; // 全局样式
+// Antd 相关
+import './global.css'; // antd 全局样式
 import 'antd/dist/antd.css'; // 全局引入antd样式
+// animate.css 相关
+import 'animate.css';
+
 
 // React.StrictMode 注意：严格模式检查仅在开发模式下运行；它们不会影响生产构建。 
 // 官网地址：https://zh-hans.reactjs.org/docs/strict-mode.html#gatsby-focus-wrapper

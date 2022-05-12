@@ -1,0 +1,14 @@
+.text_shadow{
+  text-shadow: 4px 2px 4px #cdcdcd;
+}
+
+.text_animaton{
+  color: #6e6e6e;
+  margin: 20px 0;
+  font-size: 16px;
+  text-shadow: 4px 2px 4px #d4d4d4;
+}
+
+.text_btn{
+  margin-top: 20px;
+}
