@@ -31,7 +31,8 @@ const Nav = () =>{
                   key={item.path}
                   type="link"
                   // 这里的跳转路径是父级路径 + 子集路径
-                  onClick={()=> navigator(_routerPage.path + "/" + item.path)}
+                  // params 参数使用 encodeURI 编码，使用 de
+                  onClick={()=> navigator(_routerPage.path + "/" + item.path + `?title=${encodeURI(item.title)}`)}
                 >
                   <Button 
                     type={location.pathname.includes(item.path)?"primary":"text"} 

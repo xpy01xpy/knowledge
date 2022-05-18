@@ -2,7 +2,7 @@
  * @Author: xpy
  * @Description: 定义路由列表
  * @Date: 2022-04-27 17:13:51
- * @LastEditTime: 2022-05-06 17:14:28
+ * @LastEditTime: 2022-05-13 11:33:06
  */
 import Css from '../pages/Css'; 
 import FlexBox from '../pages/Css/FlexBox'; 
@@ -28,13 +28,13 @@ export default [
       { 
         path:'BoxMode', 
         text:'BoxMode',
-        title:'css 盒模型',
+        title:'css盒模型',
         element: <BoxMode />,
       },
       { 
         path:'FlexBox', 
         text:'FlexBox',
-        title:'flex 布局',
+        title:'flex布局',
         element: <FlexBox />,
       },
       { 

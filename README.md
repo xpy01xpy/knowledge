@@ -14,6 +14,10 @@
 - 工具 工具类文件夹 src/utils/
 - UI 界面整体布局文件夹 src/Layout/
 
+> 路由的编码 和 对应的解码
+> encodeURI, decodeURI：用于编码整个URI,因为URI中的合法字符都不会被编码转换。
+> encodeURIComponent，decodeURIComponent：在编码单个URIComponent（指请求参数）应当是最常用的，它可以将参数中的中文、特殊字符进行转义，而不会影响整个URL。
+
 ##### 四、页面动效 rc-tween-one https://motion.ant.design/api/tween-one-cn
 
 ##### 五、高德地图 AMap https://console.amap.com/dev/key/app
