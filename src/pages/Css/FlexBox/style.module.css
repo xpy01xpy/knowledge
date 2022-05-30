@@ -1,0 +1,7 @@
+.topbg {
+  box-sizing: border-box;
+}
+
+.wrappersty > :global(.ant-collapse){
+  margin-top: 20px;
+}
