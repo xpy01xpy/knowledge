@@ -27,3 +27,15 @@ export function getCovidPointList(params){
   const suffix = `/getCovidPointList?type=${type}&page=${page}&pageSize=300`;
   return getMapData({ suffix, })
 }
+
+
+export function getList(params){
+  const { pageNum=1, pageSize=10, } = params;
+  return new Promise((resolve) =>{
+    const list = [];
+    for(let i = 0; i < 20; i ++){
+      list.push({ key: new Date().getTime(), name: '胡' + i, age: i, address: `西湖区湖底公园${i}号` })
+    }
+    setTimeout(()=> resolve(list), 1500)
+  })
+}

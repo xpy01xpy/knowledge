@@ -2,7 +2,7 @@
  * @Author: xpy
  * @Description: 入口文件
  * @Date: 2022-04-26 22:58:01
- * @LastEditTime: 2022-05-12 10:36:59
+ * @LastEditTime: 2022-06-15 09:47:02
  */
 import React from 'react'
 import ReactDOM from 'react-dom/client'
@@ -23,9 +23,10 @@ import 'animate.css';
 // 5、检测过时的 context API
 
 // React在严格模式下会执行【两次render】以帮忙检查额外的副作用。
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    {/* 使用路由组件包裹组件 */}
-    <Router />
-  </React.StrictMode>
-)
+// ReactDOM.createRoot(document.getElementById('root')).render(
+//   <React.StrictMode>
+//     {/* 使用路由组件包裹组件 */}
+//     <Router />
+//   </React.StrictMode>
+// )
+ReactDOM.createRoot(document.getElementById('root')).render(<Router />)
