@@ -3,26 +3,37 @@
  * @Author: xpy
  * @Description: Hello主页面
  * @Date: 2022-04-28 15:22:59
- * @LastEditTime: 2022-06-15 10:48:43
+ * @LastEditTime: 2022-06-16 14:56:22
  */
 
+import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import useTableDate from './useTableDate'
+import useTableDate from './useTableDate';
+import { Button, Spin } from 'antd';
 
 const Hello = () =>{
   const navigate = useNavigate();
   const [ data, params, setParams ] = useTableDate();
-  console.log('父组件得到的 { data, setParams}', { data, params, setParams})
+
+  const divList = useMemo(()=>{
+    if(data && data.length) {
+      return data.map(item=>{
+        return <div key={JSON.stringify(item)}>{JSON.stringify(item)}</div>
+      })
+    } else {
+      return  <div>123</div>
+    }
+  },[data]);
   
   return <div>
     <div>PC端</div>
-    <div onClick={()=>{
-      setParams(par =>({ ...par, pageNum: par.pageNum + 1, loading: !par.loading }))
-    }}>增加size</div>
-
-    <div>data: {JSON.stringify(data)}</div>
-    <div>params: {JSON.stringify(params)}</div>
-    
+    <Button onClick={()=>{
+      setParams(par =>({ ...par, pageNum: par.pageNum + 1, loading: true }))
+    }}>增加size</Button>
+    params
+    <Spin spinning={params.loading}>
+      {divList}
+    </Spin>
     <div>移动端</div>
   </div>
 }

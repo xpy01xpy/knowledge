@@ -1,3 +1,9 @@
+/*
+ * @Date: 2022-06-14 12:08:37
+ * @LastEditors: XPy
+ * @LastEditTime: 2022-06-16 14:58:58
+ * @FilePath: \knowledge\src\utils\api.js
+ */
 import { request } from './request';
 
 
@@ -34,8 +40,9 @@ export function getList(params){
   return new Promise((resolve) =>{
     const list = [];
     for(let i = 0; i < 20; i ++){
-      list.push({ key: new Date().getTime(), name: '胡' + i, age: i, address: `西湖区湖底公园${i}号` })
+      const num = pageNum * i;
+      list.push({ key: `${num} - ${new Date().getTime()}`, name: '胡' + num, age: num, address: `西湖区湖底公园${num}号` })
     }
-    setTimeout(()=> resolve(list), 1500)
+    setTimeout(()=> resolve(list), 200)
   })
 }

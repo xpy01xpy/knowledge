@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-06-15 09:36:57
  * @LastEditors: XPy
- * @LastEditTime: 2022-06-15 11:08:55
+ * @LastEditTime: 2022-06-16 14:58:29
  * @FilePath: \knowledge\src\pages\Hello\useTableDate.jsx
  */
 /*
@@ -18,13 +18,13 @@ const useTableDate = () =>{
   const [ params, setParams] = useState({ pageNum: 1, pageSize: 10, loading: true });
 
   useEffect(()=>{
-    console.log('子组件改变 params useEffect',params)
-    start(params)
+    if(params.loading) start(params)
   },[params])
 
-  const start = () =>{
-    getList({}).then(res=>{
+  const start = (params) =>{
+    getList(params).then(res=>{
       setData(res)
+      setParams(par =>({ ...par, loading: false }))
     })
   }
 
